@@ -12,11 +12,18 @@ import com.app.numberprinter.constant.NumberPrinterConstant;
 import com.app.numberprinter.serviceimpl.NumberToRomanImpl;
 import com.app.numberprinter.serviceimpl.NumberToWordsImpl;
 /**
- * NumberPrinter is the main class to start the conversion in Roman Numerals or words.
+ * NumberPrinter is the main class.
+ * to start the conversion in Roman Numerals or words.
  * @author Ravikumar
  *
  */
 public class NumberPrinter {
+	
+	/**
+	 * private constructor.
+	 */
+	private NumberPrinter(){
+		}
 	private static final Logger LOGGER = Logger.getLogger(NumberPrinter.class.getName());
 
 
@@ -25,50 +32,39 @@ public class NumberPrinter {
 	 * @param args.
 	 */
 	public static void main(String[] args) {
-
 		int number = 0;
 		int format = 0;
 		String output = null;
-		
-		Scanner start = getReadyForConversion();
-		
-		
+		final Scanner start = getReadyForConversion();
 		while (start.hasNext()
 				&& (StringUtils.equalsIgnoreCase(start.nextLine(),
 						NumberPrinterConstant.YES_FLAG))) {
-			
 			try {
 				format = getOutputFormat();
-				
 				output = getOutputFormatValue(format);
-				
 				number = getNumber();
-		
 				if (format == 1 || format == 2) {
 					getNumberConvertedValues(number, output);
-
 				}
 			} catch (InputMismatchException e) {
 				invalidInput();
 			} catch (Exception e) {
 				LOGGER.log(Level.SEVERE, e.getMessage());
-
 			}
-
 			LOGGER.info(NumberPrinterConstant.TO_CONTINUE);
-
 		}
 		LOGGER.info(NumberPrinterConstant.THANK_YOU);
 		System.exit(0);
-
 	}
 
 	/**
 	 * This method is used to call method  getRomanNumerals and getWords.
-	 * @param number is one of the parameter from user for converting to Roman numerals or Numbers as words.
-	 * @param outputFormat is the second parameter for the type of output format in Roman or words .
+	 * @param number is one of the parameter from user. 
+	 * for converting to Roman numerals or Numbers as words.
+	 * @param outputFormat is the second parameter. 
+	 * for the type of output format in Roman or words.
 	 */
-	private static void getNumberConvertedValues(int number, String outputFormat) {
+	private static void getNumberConvertedValues(final int number, final String outputFormat) {
 		
 		getRomanNumerals(number, outputFormat);
 
@@ -82,13 +78,13 @@ public class NumberPrinter {
 	 */
 	private static int getNumber() throws Exception {
 		int number;
-		Scanner arabicNumber = new Scanner(System.in);
+		final Scanner inputNumber = new Scanner(System.in);
 		LOGGER.info(NumberPrinterConstant.NUMBER_RANGE);
-		number = arabicNumber.nextInt();
+		number = inputNumber.nextInt();
 		if (number < 1 || number > 3999) {
-			System.out.println("################## WARNING MESSAGE #################");
+			LOGGER.info("################## WARNING MESSAGE #################");
 			throw new Exception(
-					NumberPrinterConstant.BUSINESS_RULE_FOR_NUMBER_RANGE);
+					NumberPrinterConstant.RULE_FOR_NUMBER_RANGE);
 		}
 
 		LOGGER.info(NumberPrinterConstant.ENTERED_VALUES + number);
@@ -99,13 +95,14 @@ public class NumberPrinter {
 	 * This method used for validating the type of output format in Roman or words.
 	 * @param format is input parameter from user will be 1 or 2.
 	 * @return Roman or words.
-	 * @throws Exception as Enter Type of Output Format : 1 ---> ROMAN or 2 ---> WORDS.
+	 * @throws Exception as Enter Type of Output Format.
+	 * 1 ---> ROMAN or 2 ---> WORDS.
 	 */
-	private static String getOutputFormatValue(int format) throws Exception {
+	private static String getOutputFormatValue(final int format) throws Exception {
 		String output;
 		output = NumberPrinterConstant.formatValues.get(format);
 		if (output == null) {
-			System.out.println("################## WARNING MESSAGE #################");
+			LOGGER.info("################## WARNING MESSAGE #################");
 			throw new Exception(NumberPrinterConstant.OUTPUT_FORMAT);
 		}
 		LOGGER.info(NumberPrinterConstant.ENTERED_VALUES + output);
@@ -113,14 +110,12 @@ public class NumberPrinter {
 	}
 
 	/**
-	 * This method to get the the Input from user for starting the Number conversion to Roman or words.
+	 * This method to get the the Input from user.
+	 * for starting the Number conversion to Roman or words.
 	 * @return start as string will be y.
 	 */
 	private static Scanner getReadyForConversion() {
-		
-	
-		Scanner start = new Scanner(System.in);
-
+		final Scanner start = new Scanner(System.in);
 		LOGGER.info(NumberPrinterConstant.PRESS_Y);
 		return start;
 	}
@@ -131,7 +126,7 @@ public class NumberPrinter {
 	 */
 	private static int getOutputFormat() {
 		int format;
-		Scanner outputFormat = new Scanner(System.in);
+		final Scanner outputFormat = new Scanner(System.in);
 		LOGGER.info(NumberPrinterConstant.OUTPUT_FORMAT);
 		format = outputFormat.nextInt();
 		return format;
@@ -141,12 +136,12 @@ public class NumberPrinter {
 	 * This method will return waring message for users to enter valid input.
 	 */
 	private static void invalidInput() {
-		System.out.println("################## WARNING MESSAGE #################");
-		System.out.println("*****************************************************************************");
-		System.out.println(NumberPrinterConstant.VALID_INPUT_FORMAT);
-		System.out.println(NumberPrinterConstant.OUTPUT_FORMAT);
-		System.out.println(NumberPrinterConstant.NUMBER_RANGE);
-		System.out.println("*****************************************************************************");
+		LOGGER.info("################## WARNING MESSAGE #################");
+		LOGGER.info("*****************************************************************************");
+		LOGGER.info(NumberPrinterConstant.INPUT_FORMAT);
+		LOGGER.info(NumberPrinterConstant.OUTPUT_FORMAT);
+		LOGGER.info(NumberPrinterConstant.NUMBER_RANGE);
+		LOGGER.info("*****************************************************************************");
 	}
 
 	/**
@@ -156,8 +151,7 @@ public class NumberPrinter {
 	 */
 	private static void getWords(int number, String format) {
 		if (StringUtils.equalsIgnoreCase(format, NumberPrinterConstant.WORDS)) {
-
-			NumberToWordsImpl numToWords = new NumberToWordsImpl();
+            final NumberToWordsImpl numToWords = new NumberToWordsImpl();
 			LOGGER.info("*********Numbers as Words*********: "+numToWords.convertNumberToWords(number));
 		}
 	}
@@ -169,8 +163,7 @@ public class NumberPrinter {
 	 */
 	private static void getRomanNumerals(int number, String format) {
 		if (StringUtils.equalsIgnoreCase(format, NumberPrinterConstant.ROMAN)) {
-
-			NumberToRomanImpl numToRom = new NumberToRomanImpl();
+            final NumberToRomanImpl numToRom = new NumberToRomanImpl();
 			LOGGER.info("*********Roman Numerals**********: "+numToRom.convertToRoman(number));
 		}
 	}

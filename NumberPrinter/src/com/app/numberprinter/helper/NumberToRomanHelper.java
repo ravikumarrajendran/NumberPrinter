@@ -5,22 +5,30 @@ import java.util.Set;
 
 import com.app.numberprinter.constant.NumberPrinterConstant;
 /**
- * NumberToRomanHelper is the Helper class used to assist in providing some functionality to converting Number to Roman Numerals. 
+ * NumberToRomanHelper is the Helper class.  
+ * used to assist in providing some functionality. 
+ * to converting Number to Roman Numerals. 
  * @author Ravikumar.
  *
  */
 public class NumberToRomanHelper {
+	
+	/**
+	 * private constructor.
+	 */
+	private NumberToRomanHelper(){	
+	}
 	/**
 	 * To get the Key. 
 	 * @param Number as input for converting number to words.
 	 * @return string. 
 	 */
-	 public static int getRomanInteger(int number) {
-	        Set<Integer> keySet = NumberPrinterConstant.romanValues.keySet();
-	        Iterator<Integer> iter = keySet.iterator();
+	 public static int getRomanInteger(final int number) {
+	        final Set<Integer> keySet = NumberPrinterConstant.romanValues.keySet();
+	        final Iterator<Integer> iterator = keySet.iterator();
 	        int prevValue = 0;
-	        while (iter.hasNext()) {
-	            Integer value = iter.next();
+	        while (iterator.hasNext()) {
+	            final Integer value = iterator.next();
 	            if (value > number) {
 	                return prevValue;
 	            } else {
@@ -36,9 +44,9 @@ public class NumberToRomanHelper {
 	 * @param number.
 	 * @return string.
 	 */
-	 public static  String getRomanNumerals(int number) {
-	        String s = NumberPrinterConstant.romanValues.get(number);
-	        return (s == null) ? "" : s;
+	 public static  String getRomanNumerals(final int number) {
+	        String romanNumerals = NumberPrinterConstant.romanValues.get(number);
+	        return (romanNumerals == null) ? "" : romanNumerals;
 	    }
 
 }

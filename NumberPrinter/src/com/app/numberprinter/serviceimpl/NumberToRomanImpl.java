@@ -4,7 +4,9 @@ import com.app.numberprinter.helper.NumberToRomanHelper;
 import com.app.numberprinter.service.NumberToRoman;
 
 /**
- * NumberToRomanImpl is the class used to providing some functionality to converting Number to Roman Numerals. 
+ * NumberToRomanImpl is the class used.
+ * to providing some functionality.
+ * to converting Number to Roman Numerals. 
  * @author Ravikumar
  *
  */
@@ -16,9 +18,9 @@ public class NumberToRomanImpl implements NumberToRoman{
 	 * @return string. 
 	 */
 	public String convertToRoman(int Number) {
-		StringBuilder romanNumerals = new StringBuilder();
+		final StringBuilder romanNumerals = new StringBuilder();
         while(Number > 0) {
-            int value = NumberToRomanHelper.getRomanInteger(Number);
+            final int value = NumberToRomanHelper.getRomanInteger(Number);
             romanNumerals.append(NumberToRomanHelper.getRomanNumerals(value));
             Number -= value;
         }

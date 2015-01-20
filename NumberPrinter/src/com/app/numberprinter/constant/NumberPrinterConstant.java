@@ -10,15 +10,20 @@ import java.util.TreeMap;
  *
  */
 public final class NumberPrinterConstant {
+	
+	/**
+	 * Default Constructor.
+	 */
+	public NumberPrinterConstant(){
+		
+	}
 
 	
 	/**
 	 *  To Initialize the Roman Letters.
 	 */
-	public static Map<Integer, String> romanValues = null;
+	public static Map<Integer, String> romanValues = new TreeMap<Integer, String>();
 	static {
-		romanValues = new TreeMap<Integer, String>();
-
 		romanValues.put(1, "I");
 		romanValues.put(4, "IV");
 		romanValues.put(5, "V");
@@ -37,13 +42,13 @@ public final class NumberPrinterConstant {
 	public static final String ROMAN="ROMAN";
 	
 	public static final String WORDS="WORDS";
-	public static final String[] Thousands = {
+	public static final String[] THOUSANDS = {
         "",
         " Thousand"
        
     };
     
-	public static final String[] Tens = {
+	public static final String[] TENS = {
         "",
         " Ten",
         " Twenty",
@@ -56,7 +61,7 @@ public final class NumberPrinterConstant {
         " Ninety"
     };
     
-	public static final String[] Numbers = {
+	public static final String[] NUMBERS = {
         "",
         " One",
         " Two",
@@ -80,10 +85,8 @@ public final class NumberPrinterConstant {
     };
 
 	
-	public static Map<Integer, String> formatValues = null;
+	public static Map<Integer, String> formatValues = new TreeMap<Integer, String>();
 	static {
-		formatValues = new TreeMap<Integer, String>();
-
 		formatValues.put(1, "ROMAN");
 		formatValues.put(2, "WORDS");
 		
@@ -94,8 +97,8 @@ public final class NumberPrinterConstant {
 	public static final String OUTPUT_FORMAT="Enter Type of Output Format : 1 ---> ROMAN or 2 ---> WORDS";
 	public static final String NUMBER_RANGE="Please Enter Number Between 1 to 3999";
 	public static final String ENTERED_VALUES="You entered : ";
-	public static final String BUSINESS_RULE_FOR_NUMBER_RANGE="The Solution is Only Required To Convert Numbers in the Range 1 - 3999";
-	public static final String VALID_INPUT_FORMAT="Enter Valid Format/Only Numbers Are Allowed";
+	public static final String RULE_FOR_NUMBER_RANGE="The Solution is Only Required To Convert Numbers in the Range 1 - 3999";
+	public static final String INPUT_FORMAT="Enter Valid Format/Only Numbers Are Allowed";
 	public static final String TO_CONTINUE="To Continue Conversion Press[Y]";
 	public static final String THANK_YOU="Thank you";
 	public static final String HUNDRED=" Hundred";

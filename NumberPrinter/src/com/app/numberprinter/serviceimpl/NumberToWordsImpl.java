@@ -4,7 +4,9 @@ import com.app.numberprinter.constant.NumberPrinterConstant;
 import com.app.numberprinter.helper.NumberToWordsHelper;
 import com.app.numberprinter.service.NumberToWords;
 /**
- * NumberToWordsImpl is the class used to providing some functionality to converting Number to words. 
+ * NumberToWordsImpl is the class used. 
+ * to providing some functionality.
+ * to converting Number to words. 
  * @author Ravikumar
  *
  */
@@ -16,15 +18,14 @@ public class NumberToWordsImpl implements NumberToWords {
 	 * @return string. 
 	 */
 	public String convertNumberToWords(int number) {
-        String prefix = "";
+        final String prefix = "";
         String current = "";
 		int place = 0;
-
-		do {
-			int n = number % 1000;
+          do {
+			final int n = number % 1000;
 			if (n != 0) {
-				String s = NumberToWordsHelper.getConvertUptoHundreds(n);
-				current = s + NumberPrinterConstant.Thousands[place]
+				final String words = NumberToWordsHelper.getConvertUptoHundreds(n);
+				current = words + NumberPrinterConstant.THOUSANDS[place]
 						+ current;
 			}
 			place++;

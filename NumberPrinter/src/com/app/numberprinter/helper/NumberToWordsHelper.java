@@ -9,7 +9,7 @@ import com.app.numberprinter.constant.NumberPrinterConstant;
  * @author Ravikumar
  *
  */
-public class NumberToWordsHelper {
+public final class NumberToWordsHelper {
 	
 	/**
 	 * private constructor.

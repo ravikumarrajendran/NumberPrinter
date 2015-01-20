@@ -54,7 +54,7 @@ public class TestNumberPrinter {
 	@Test
 	public void testNumbertoWordsNotEqual() {
 		NumberToWordsImpl numberToWordsImpl = new NumberToWordsImpl();
-		 assertNotEquals("Must Be Not Equal", "One", numberToWordsImpl.convertNumberToWords(0));
+		assertNotSame("One", numberToWordsImpl.convertNumberToWords(0));
 		
 	}
 	/**
@@ -92,7 +92,7 @@ public class TestNumberPrinter {
 	@Test
 	public void testNumberToRomanNotEqual() {
 	     NumberToRomanImpl numberToRomanImpl = new NumberToRomanImpl();
-		 assertNotEquals("Must Be Not Equal", "IV", numberToRomanImpl.convertToRoman(5));
+	     assertNotSame("IV", numberToRomanImpl.convertToRoman(5));
 		
 	}
 	

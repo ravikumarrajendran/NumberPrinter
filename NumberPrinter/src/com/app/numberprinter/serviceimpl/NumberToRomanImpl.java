@@ -17,12 +17,12 @@ public class NumberToRomanImpl implements NumberToRoman{
 	 * @param Number as input for converting number to Roman Numerals.
 	 * @return string. 
 	 */
-	public String convertToRoman(int Number) {
+	public String convertToRoman(int number) {
 		final StringBuilder romanNumerals = new StringBuilder();
-        while(Number > 0) {
-            final int value = NumberToRomanHelper.getRomanInteger(Number);
+        while(number > 0) {
+            final int value = NumberToRomanHelper.getRomanInteger(number);
             romanNumerals.append(NumberToRomanHelper.getRomanNumerals(value));
-            Number -= value;
+            number -= value;
         }
         return romanNumerals.toString();
 	}

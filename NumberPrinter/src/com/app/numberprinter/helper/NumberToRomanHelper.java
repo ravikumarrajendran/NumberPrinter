@@ -11,7 +11,7 @@ import com.app.numberprinter.constant.NumberPrinterConstant;
  * @author Ravikumar.
  *
  */
-public class NumberToRomanHelper {
+public final class NumberToRomanHelper {
 	
 	/**
 	 * private constructor.

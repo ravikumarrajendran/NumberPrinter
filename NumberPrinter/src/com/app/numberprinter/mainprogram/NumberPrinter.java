@@ -17,7 +17,7 @@ import com.app.numberprinter.serviceimpl.NumberToWordsImpl;
  * @author Ravikumar
  *
  */
-public class NumberPrinter {
+public final class NumberPrinter {
 	
 	/**
 	 * private constructor.
